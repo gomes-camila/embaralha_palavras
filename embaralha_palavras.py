@@ -8,6 +8,9 @@ tentativa = 5
 lista_palavras = 'microfone','garrafa','meia','rede','controle'
 palavra_aleatoria = random.choice(lista_palavras)
 
+def main():
+    tema = input("Selecione um tema: Cidades, Objetos, Países ")
+    dificuldade = input("Selecione a dificuldade: Fácil, Médio ou Dificil")
 
 while tentativa != 0:
     embaralha_palavra = random.sample(palavra_aleatoria, len(palavra_aleatoria))
