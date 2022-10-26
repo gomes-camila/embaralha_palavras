@@ -1,21 +1,52 @@
-#Crie um jogo que embaralhe uma palavra e a mostre ao jogador. O objetivo é acertar a palavra em até 5 tentativas. 
-#Informe sempre quantas tentativas ele ainda tem. Se ele acertar, dê os parabéns; se errar dê uma palavra de ânimo 
-#(que mude de forma aleatória). Ao final, mostre a palavra correta e o número de tentativas que ele utilizou.
-
 import random
+
 
 def main():
     print("Embaralha Palavras")
     var_tema_input = input("Selecione um tema:\n1- Cidades, 2- Objetos ou 3- Países\n")
-    var_dificuldade_input = input("Selecione a dificuldade:\n1- Fácil, 2- Médio ou 3- Dificil\n")
-    
-    funcao_tentativas(embaralha_palavra(var_dificuldade_input, escolhe_tema(var_tema_input)))
+    var_dificuldade_input = input(
+        "Selecione a dificuldade:\n1- Fácil, 2- Médio ou 3- Dificil\n"
+    )
+
+    funcao_tentativas(
+        embaralha_palavra(var_dificuldade_input, escolhe_tema(var_tema_input))
+    )
 
 
 def escolhe_tema(par_tema):
-    cidades = ["Itu", "Natal", "Belém", "Manaus", "Maceió", "Goiânia", "Salvalor", "Joinville", "Porto Alegre"]
-    objetos = ["Bola", "Meia", "Rede", "Quadro", "Garrafa", "Esmalte", "Microfone", "Isqueiro", "Microondas"]
-    paises = ["Peru", "China", "Egito", "Iraque", "França", "Rússia", "Alemanha", "Vaticano", "Argentina"]
+    cidades = [
+        "Itu",
+        "Natal",
+        "Belém",
+        "Manaus",
+        "Maceió",
+        "Goiânia",
+        "Salvalor",
+        "Joinville",
+        "Porto Alegre",
+    ]
+    objetos = [
+        "Bola",
+        "Meia",
+        "Rede",
+        "Quadro",
+        "Garrafa",
+        "Esmalte",
+        "Microfone",
+        "Isqueiro",
+        "Microondas",
+    ]
+    paises = [
+        "Peru",
+        "China",
+        "Egito",
+        "Iraque",
+        "França",
+        "Rússia",
+        "Alemanha",
+        "Vaticano",
+        "Argentina",
+    ]
 
     if par_tema == "1":
         print("Tema Cidades")
@@ -39,20 +70,22 @@ def escolhe_dificuldade(par_dificuldade, par_tema):
         for item in par_tema:
             if len(item) > 5 and len(item) < 8:
                 palavras_em_tema_dificuldade.append(item)
-    
+
     if par_dificuldade == "3":
         for item in par_tema:
             if len(item) >= 8:
                 palavras_em_tema_dificuldade.append(item)
-    
+
     return palavras_em_tema_dificuldade
 
 
 def embaralha_palavra(par_dificuldade, par_tema):
     palavra_aleatoria = random.choice(escolhe_dificuldade(par_dificuldade, par_tema))
     embaralha_palavra = random.sample(palavra_aleatoria, len(palavra_aleatoria))
-    juntar_palavra_embaralhada = ''.join(embaralha_palavra)
-    print(f"Você tem 5 tentativas para acertar a palavra a seguir:\n{juntar_palavra_embaralhada}")
+    juntar_palavra_embaralhada = "".join(embaralha_palavra)
+    print(
+        f"Você tem 5 tentativas para acertar a palavra a seguir:\n{juntar_palavra_embaralhada}"
+    )
 
     return palavra_aleatoria
 
